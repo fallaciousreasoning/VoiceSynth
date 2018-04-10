@@ -1,18 +1,21 @@
 import boto3
 from extracttext import get_chapters
+import random
 
 client = boto3.client('polly')
 
 def get_voice():
     """Gets the voice we want from Amazon"""
 
-    # TODO: Not this
-    return 'Joanna'
+    # TODO: not even this...
+    english_regions = ['en-AU', 'en-GB', 'en-US']
+    voices = []
+    for region in english_regions:
+        response = client.describe_voices(LanguageCode=region)
+        for voice in response['Voices']
+            voices.append(voice['Id'])
 
-    # Or this
-    response = client.describe_voices(LanguageCode='en-AU')
-    voice = response['Voices'][0]
-    return voice['Id']
+    return random.choice(voices)
 
 def synth_book(text, voice, output_file):
 
