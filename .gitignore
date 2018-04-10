@@ -1,3 +1,7 @@
 .vscode/
 *.epub
 *.mp3
+__pycache__/
+.idea/
+*.iml
+
